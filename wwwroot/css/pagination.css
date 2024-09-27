@@ -1,0 +1,136 @@
+.pagination-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    margin-left: auto;
+}
+
+#pageSizeSelect,
+#subscriptionFrequencySelect {
+    width: 100px;
+}
+
+#pageSizeSelectLabel,
+#subscriptionFrequencySelectLabel {
+    font-weight: normal;
+    font-size: 14px;
+}
+
+#currentPage {
+    padding: 0px 5px;
+    margin-bottom: 0px;
+}
+
+.pagination-container button,
+.pagination-container select,
+#pageSizeSelectLabel,
+#subscriptionFrequencySelectLabel {
+    margin-left: 10px;
+}
+
+.disabled {
+    opacity: 0.5; 
+    cursor: not-allowed; 
+    pointer-events: none; 
+}
+
+button {
+    padding: 8px 20px;
+    background-color: rgba(0, 0, 0, 0);
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-right: 10px;
+    margin-bottom: 15px;
+    font-family: "Arial";
+    align-self: flex-end;
+    margin-bottom: 0px;
+}
+
+
+button:hover {
+    font-weight: bold;
+}
+
+select {
+    margin-top: 10px;
+    display: inline-block;
+    width: calc(50% - 120px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+label {
+    margin-top: 10px;
+    display: inline-block;
+    width: 100px;
+    font-weight: bold;
+}
+
+#searchForm {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+    #searchForm > label,
+    #searchForm > select,
+    #searchForm > button {
+        margin-right: 10px; 
+    }
+
+#subscriptionFrequencySelect,
+#subscriptionFrequencySelectLabel {
+    margin-right: 10px;
+}
+
+#subscribeButton {
+    margin-left: 10px;
+    margin-bottom: 10px; 
+}
+
+.pagination-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+}
+
+#pageSizeSelect,
+#pageSizeSelectLabel {
+    margin-right: 10px;
+}
+
+#prevPage,
+#nextPage {
+    margin: 0 5px; 
+}
+
+#currentPage {
+    padding: 0 5px;
+    margin: 0;
+}
+
+
+.info-icon {
+    display: inline-block;
+    width: 20px; 
+    height: 20px; 
+    background-color: #ccc; 
+    color: #333;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px; 
+    font-size: 14px;
+    cursor: pointer; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+}
+
+
+.info-icon:hover {
+    background-color: #bbb; 
+}

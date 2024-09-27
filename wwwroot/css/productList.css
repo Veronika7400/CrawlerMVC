@@ -1,0 +1,214 @@
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.col {
+    flex: calc(33.33% - 20px);
+    max-width: 300px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: margin 0.3s;
+    flex-basis: 100%;
+}
+
+.col:hover {
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: margin 0.3s;
+}
+
+.product-info {
+    padding: 10px;
+}
+
+.product-image-container {
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 20px 20px 0 0;
+}
+
+.product-details {
+    flex-grow: 1;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-top: 1px solid #ccc;
+    border-radius: 0 0 20px 20px;
+    padding: 10px;
+}
+
+.product-details h5,
+.product-details p {
+    margin: 0;
+}
+
+.product-name {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.view-page {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    padding: 5px 10px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card:hover .view-page {
+    opacity: 1;
+}
+
+.price {
+    text-align: right;
+    font-weight: bold;
+    font-size: 22px;
+    margin-top: auto;
+}
+
+.productName {
+    max-width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+h1 {
+    font-size: 60px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: "Montserrat";
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+h5 {
+    font-family: "Montserrat";
+    font-weight: bold;
+    font-size: 22px;
+}
+
+p {
+    font-family: "Montserrat";
+}
+
+/* Loader styles */
+.loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    display: none;
+}
+
+.loader {
+    border: 8px solid rgba(255, 255, 255, 0.3); 
+    border-top: 8px solid #ffffff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); 
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.loader-overlay {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.successMessage, .errorMessage, .denyedMessage{
+    position: fixed;
+    top: 90px;
+    right: 10px;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.successMessage {
+    background-color: rgba(0, 255, 0, 0.6);
+}
+
+.errorMessage, .denyedMessage {
+    background-color: rgba(255, 0, 0, 0.6);
+}
+
+.container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 20px; 
+}
+
+.subscription-container,
+.pagination-container {
+    display: flex; 
+    align-items: center; 
+}
+
+.subscription-container label,
+.pagination-container label {
+    margin-right: 10px;
+}
+
+.subscription-container select,
+.pagination-container select,
+.subscription-container button,
+.pagination-container button {
+    margin-right: 520px; 
+}
+
+.products {
+    margin-bottom: 50px; 
+}

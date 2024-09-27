@@ -1,0 +1,203 @@
+.header {
+    background-color: #8D6F64;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    font-size: 60px;
+    margin-bottom: 10px;
+    color: black;
+    font-family: "Arial Nova Cond Light";
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#actions {
+    text-align: center;
+}
+
+    #actions img {
+        margin: 10px;
+    }
+
+.successMessage, .errorMessage {
+    position: fixed;
+    top: 90px;
+    right: 10px;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.successMessage {
+    background-color: rgba(0, 255, 0, 0.6);
+}
+
+.errorMessage {
+    background-color: rgba(255, 0, 0, 0.6);
+}
+
+.modal {
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    overflow: auto;
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+}
+
+label {
+    margin-top: 10px;
+    display: inline-block;
+    width: 100px;
+    font-weight: bold;
+}
+
+input[type="text"],
+select,
+input[type="email"],
+input[type="checkbox"] {
+    margin-top: 10px;
+    display: inline-block;
+    width: calc(50% - 120px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.formButton {
+    cursor: pointer;
+    float: right;
+    margin-right: 10px;
+}
+
+#editRole {
+    margin-top: 10px;
+    display: inline-block;
+    width: calc(50% - 120px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+th {
+    background-color: dimgrey;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:first-child th {
+    border-top: none;
+    border-radius: 10px 10px 0 0;
+}
+
+tr:last-child td {
+    border-bottom: none;
+    border-radius: 0 0 10px 10px;
+}
+
+
+#actions a {
+    margin-right: 5px;
+}
+
+.action-icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s;
+}
+
+    .action-icon:hover {
+        transform: translateY(-3px);
+    }
+
+th {
+    position: relative;
+    padding-right: 30px;
+}
+
+.sort-arrow {
+    color: #555;
+    font-size: 0.8em;
+    text-decoration: none;
+    margin-left: 5px;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.sort-arrow.asc {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.sort-arrow.desc {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.sort-arrow:hover {
+    color: #333;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+#searchForm {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+#searchForm input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+}
+
+button[type="submit"] {
+    margin-bottom: 8px;
+    margin-left:3px; 
+}
+
+#editUserModal .form-control,
+#editUserModal .form-select {
+    min-width: 150px;
+}
