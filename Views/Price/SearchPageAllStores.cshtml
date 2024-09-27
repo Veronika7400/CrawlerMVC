@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "All Stores Search Page";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Stores Search Page</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/searchPage.css">
+</head>
+<body>
+    <div class="container">
+        <div class="search-container text-center">
+            <h1>All Stores Search Page</h1>
+            <h4>
+                Tell us what you're looking for, and we'll uncover the best deals <br />
+                from every store for your desired product
+            </h4>
+            <br />
+            <form action="/Price/ProductListAllStores" method="GET" class="d-flex justify-content-center align-items-center">
+                <div class="form-group mb-2">
+                    <input type="text" class="form-control" name="searchWord" placeholder="Enter your search query" value="@ViewData["SearchWord"]">
+                </div>
+                <button type="submit" class="mb-2 ml-2">Search</button>
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>

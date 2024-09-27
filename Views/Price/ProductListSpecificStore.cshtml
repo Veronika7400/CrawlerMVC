@@ -1,0 +1,125 @@
+﻿@model List<WebApiCrawler.SearchModels.LowestPriceResult>
+
+@{
+    ViewData["Title"] = "List of Products";
+    var searchWord = ViewData["SearchWord"] as string ?? "";
+    var storeId = ViewData["StoreId"] as string ?? "";
+    string storeName = "";
+    if (Model != null && Model.Any())
+    {
+        foreach (var product in Model)
+        {
+            storeName = @product.StoreName;
+            break;
+        }
+    }
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Products</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/productList.css">
+    <link rel="stylesheet" href="~/css/pagination.css">
+    <script src="~/js/productListSpecificStore.js"></script>
+</head>
+<body>
+    <div class="successMessage" style="display:none;">Action successfully completed!</div>
+    <div class="denyedMessage" style="display:none;">You are already subscribed!</div>
+    <div class="errorMessage" style="display:none;">Action was not successfully completed!</div>
+    
+    <h1> List of Products @storeName</h1>
+    <div class="loader-overlay" id="loader">
+        <div class="loader"></div>
+    </div>
+    
+    <div class="container container-fluid">
+        <div class="row mb-3">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="col-md-6">
+                    <div class="subscription-container">
+                        <label id="subscriptionFrequencySelectLabel">
+                            Email frequency:
+                            <span class="info-icon" title="Select how often you want to receive email notifications about product prices for search word @searchWord.">?</span>
+                        </label>
+                        <select id="subscriptionFrequencySelect" name="frequency">
+                            <option value="daily">Daily</option>
+                            <option value="weekly">Weekly</option>
+                            <option value="monthly">Monthly</option>
+                        </select>
+                        <button type="button" id="subscribeButton">Subscribe</button>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="col-md-6">
+                    <div class="subscription-container">
+                        <label id="subscriptionFrequencySelectLabel">
+                            Email frequency:
+                            <span class="info-icon" title="Select how often you want to receive email notifications about product prices for search word @searchWord.">?</span>
+                        </label>
+                        <select id="subscriptionFrequencySelect" name="frequency" disabled>
+                            <option value="daily">Daily</option>
+                            <option value="weekly">Weekly</option>
+                            <option value="monthly">Monthly</option>
+                        </select>
+                        <button type="button" id="subscribeButton" class="disabled">Subscribe</button>
+
+                    </div>
+                </div>
+            }
+            <div class="col-md-6">
+                <div class="pagination-container">
+                    <label id="pageSizeSelectLabel">Products per page: </label>
+                    <select id="pageSizeSelect" name="pageSize">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="40">40</option>
+                    </select>
+                    <button type="button" id="prevPage"><</button>
+                    <span id="currentPage">1</span>
+                    <button type="button" id="nextPage">></button>
+                    <input type="hidden" name="page" value="1">
+            <input type="hidden" id="searchWord" value="@searchWord" />
+            <input type="hidden" id="storeId" value="@storeId" />
+                 </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="products" id="productsContainer">
+        <div class="row">
+            @if (Model != null && Model.Any())
+            {
+                foreach (var product in Model)
+                {
+                    <div class="col col-md-3 mb-3" onclick="redirectToLink('@product.Url')">
+                        <div class="card shadow-sm">
+                            <div class="product-info">
+                                <div class="product-image-container">
+                                    <img src="@product.ImageUrl" style="width: 300px; height: 300px;" aria-label="Placeholder: Product Image" alt="Product Image">
+                                </div>
+                                <div class="product-details">
+                                    <h5>@product.StoreName</h5>
+                                    <p class="productName">@product.ProductName</p>
+                                    <p class="price">@product.PriceValue €</p>
+                                </div>
+                            </div>
+                            <div class="view-page text-center">View Page</div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p>No products found.</p>
+            }
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,114 @@
+﻿@{
+    ViewData["Title"] = "Users";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User list</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/users.css">
+    <link rel="stylesheet" href="~/css/pagination.css">
+    <script src="~/js/userList.js"></script>
+</head>
+<body>
+    <div class="successMessage" style="display:none;">Action successfully completed</div>
+    <div class="errorMessage" style="display:none;">Action was not successfully completed</div>
+    <h1>User list</h1>
+
+    <form id="searchForm" class="row mb-3">
+        <div class="col-md-6 d-flex align-items-center">
+            <div class="col-md-8">
+                <input type="text" name="filter" placeholder="Search" class="w-100">
+            </div>
+            <div class="col-md-4 mt-3">
+                <button type="submit" >Search</button>
+            </div>
+        </div>
+
+        <div class="col-md-6 d-flex align-items-center justify-content-end">
+            <label id="pageSizeSelectLabel" class="me-2">Users per page:</label>
+            <select id="pageSizeSelect" name="pageSize" class="form-select me-2">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="40">40</option>
+            </select>
+
+            <button type="button" id="prevPage" class="me-2">&lt;</button>
+            <span id="currentPage" class="me-2">1</span>
+            <button type="button" id="nextPage" >&gt;</button>
+
+            <input type="hidden" name="page" value="1">
+        </div>
+    </form>
+
+    <div class="table-responsive">
+        <table style="width:100%">
+            <thead>
+                <tr>
+                    <th name="fullname">
+                        Full Name
+                        <a href="#" class="sort-arrow asc" onclick="sortTable('fullname', 'asc')">▲</a>
+                        <a href="#" class="sort-arrow desc" onclick="sortTable('fullname', 'desc')">▼</a>
+                    </th>
+                    <th name="username">
+                        Username
+                        <a href="#" class="sort-arrow asc" onclick="sortTable('username', 'asc')">▲</a>
+                        <a href="#" class="sort-arrow desc" onclick="sortTable('username', 'desc')">▼</a>
+                    </th>
+                    <th name="email">
+                        Email
+                        <a href="#" class="sort-arrow asc" onclick="sortTable('email', 'asc')">▲</a>
+                        <a href="#" class="sort-arrow desc" onclick="sortTable('email', 'desc')">▼</a>
+                    </th>
+                    <th name="role">
+                        Role
+                        <a href="#" class="sort-arrow asc" onclick="sortTable('role', 'asc')">▲</a>
+                        <a href="#" class="sort-arrow desc" onclick="sortTable('role', 'desc')">▼</a>
+                    </th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="userTableBody">
+            </tbody>
+        </table>
+    </div>
+
+    <div id="editUserModal" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1>Edit User</h1>
+                </div>
+                <div class="modal-body">
+                    <form id="editUserForm">
+
+                        <input type="hidden" id="editUserId" name="userId">
+                        <label for="editFullname" class="form-label">Full Name:</label>
+                        <input type="text" id="editFullname" name="fullname" class="form-control">
+
+                        <label for="editUsername" class="form-label">Username:</label>
+                        <input type="text" id="editUsername" name="username" class="form-control">
+                     
+                        <label for="editEmail" class="form-label">Email:</label>
+                        <input type="email" id="editEmail" name="email" class="form-control">
+                       
+                        <label for="editRole" class="form-label">Role:</label>
+                        <select id="editRole" name="role" class="form-select">
+                        </select>
+
+                        <label for="active">Active:</label>
+                        <input type="checkbox" id="editActive" name="active"><br /><br />
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="submitEditUser()">Edit</button>
+                    <button type="button" onclick="closeEditUserModal()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

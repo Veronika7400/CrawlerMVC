@@ -1,0 +1,83 @@
+﻿@model List<WebApiCrawler.Models.WebStore>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="~/css/index.css">
+</head>
+<body>
+    <div class="slider-container">
+        <div class="slide active">
+            <div class="slide-content">
+                <img class="slide-image" src="~/images/SlideImg1.jpg" alt="All stores search">
+                <div class="slide-info">
+                    <h2 >Discover the ultimate<br />shopping companion!</h2>
+                    <h5>Discover unbeatable deals on any product with our tool! From electronics to fashion, it searches the web for the lowest prices across all stores, so you can shop smarter and save big.</h5>
+                    <a class="btn" asp-area="" asp-controller="Price" asp-action="SearchPageAllStores">Start search</a>
+                </div>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="slide-content">
+                <img class="slide-image" src="~/images/SlideImg2.jpg" alt="Specific store search">
+                <div class="slide-info">
+                    <h2> We streamline your shopping experience!</h2>
+                    <h5>Simply enter your desired product and our platform swiftly compiles a detailed list of available items from your selected store. Explore the possibilities of personalized shopping today!</h5>
+                    <a class="btn" asp-area="" asp-controller="Price" asp-action="SearchPageSpecificStore">Start search</a>
+                </div>
+            </div>
+        </div>
+        <div class="prev" onclick="prevSlide()">&#10094;</div>
+        <div class="next" onclick="nextSlide()">&#10095;</div>
+    </div>
+
+    <div class="web-shops-section">
+        <h2>Web Shops</h2>
+        <div class="shop-list">
+            @foreach (var store in Model)
+                {
+                    <div class="shop">
+                        <img src="https://icon-library.com/images/online-shopping-icon/online-shopping-icon-9.jpg" alt="Shop Image">
+                        <p>@store.Name</p>
+                    </div>
+                }
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                if (i === index) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide++;
+            if (currentSlide >= slides.length) {
+                currentSlide = 0;
+            }
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide--;
+            if (currentSlide < 0) {
+                currentSlide = slides.length - 1;
+            }
+            showSlide(currentSlide);
+        }
+    </script>
+</body>
+</html>
